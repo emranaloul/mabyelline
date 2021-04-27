@@ -75,7 +75,7 @@ app.post( '/saveselection', ( req,res )=>{
   client.query( SQL,safeValues )
     .then( results=>{
       // res.send( results.rows );
-      let productsArr = results.body.map( val=>{
+      let productsArr = results.rows.map( val=>{
         return new Product( val );
       } );
       res.redirect( '/mycard' );
