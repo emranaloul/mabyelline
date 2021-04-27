@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/allproducts">All Products</a>
+
+    <form action="/productbyprice" method="POST">
+        <legend>Get Product by price</legend>
+    <input type="number" name="minprice" placeholder="min price" required>
+    <input type="number" name="maxprice" placeholder="max price" required>
+    <button>Get!</button>
+    </form>
+</body>
+</html>

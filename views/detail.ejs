@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <a href="/">Home</a>
+    <a href="/allproducts">All Products</a>
+
+         <h3><%= val.name %> </h3>
+        <img src="<%= val.image %> " alt="">
+        <h4><%= val.price %> </h4>
+        <p><%= val.description %> </p>
+
+        <form action="/delete/<%= val.id %>?_method=delete " method="POST">
+        <button>Delete Product</button>
+        </form>
+
+        <button id="updateBtn">Update</button>
+        <section id="UpdateForm">
+            <form action="/update/<%= val.id %>?_method=put" method="POST">
+            <input type="text" name="name" value="<%= val.name %>">
+            <input type="text" name="image" value="<%= val.image %>">
+            <input type="text" name="price" value="<%= val.price %>">
+            <input type="text" name="description" value="<%= val.description %>">
+            <button>Update</button>
+
+            </form>
+        </section>
+</body>
+</html>
