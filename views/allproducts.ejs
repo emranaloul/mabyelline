@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/allproducts">All Products</a>
+
+    <% results.forEach(val =>{%> 
+        <h3><%= val.name %> </h3>
+        <img src="<%= val.image %> " alt="">
+        <h4><%= val.price %> </h4>
+        <p><%= val.description %> </p>
+        <form action="/saveselection" method="POST">
+        <input type="hidden" name="name" value="<%= val.name %>">
+        <input type="hidden" name="image" value="<%= val.image %>">
+        <input type="hidden" name="price" value="<%= val.price %>" >
+        <input type="hidden" name="description" value="<%= val.description %>">
+        <button>Add to my Cart</button>
+        </form>
+   <% }) %> 
+</body>
+</html>
