@@ -6,3 +6,5 @@ CREATE TABLE maybellinep (
     price VARCHAR(255),
     description TEXT
 );
+
+ INSERT INTO maybellinep (name,image,price,description) VALUES (1,2,3,4);
