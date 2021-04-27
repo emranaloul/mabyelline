@@ -86,7 +86,7 @@ app.get( '/mycard', ( req,res )=>{
   let SQL = 'SELECT * FROM maybellinep;';
   client.query( SQL )
     .then( results =>{
-      let productsArr = results.body.map( val=>{
+      let productsArr = results.rows.map( val=>{
         return new Product( val );
       } );
       res.render( 'mycard', {results : productsArr} );
