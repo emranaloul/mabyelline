@@ -7,4 +7,3 @@ CREATE TABLE maybellinep (
     description TEXT
 );
 
- INSERT INTO maybellinep (name,image,price,description) VALUES (1,2,3,4);

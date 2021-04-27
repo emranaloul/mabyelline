@@ -13,11 +13,11 @@
     <a href="/mycard">My card</a>
 
 
-    <% results.forEach(val =>{%> 
-        <h3><%= val.name %> </h3>
-        <img src="<%= val.image %> " alt="">
-        <h4><%= val.price %> </h4>
-        <form action="/product/<%= val.id %> " method="POST">
+    <% results.forEach(element =>{%> 
+        <h3><%= element.name %> </h3>
+        <img src="<%= element.image %>" alt="">
+        <h4><%= element.price %> </h4>
+        <form action="/product/<%= element.id %> ">
         <button>View Details</button>
         </form>
    <% }) %> 

@@ -15,7 +15,7 @@ app.use( methodOverride( '_method' ) );
 app.use( express.static( './public' ) );
 app.set( 'view engine', 'ejs' );
 
-//const client = new pg.Client( process.env.DATABASE_URL );
+// const client = new pg.Client( process.env.DATABASE_URL );
 const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
 // const client = new pg.Client( { connectionString: process.env.DATABASE_URL, ssl: process.env.LOCALLY ? false : {rejectUnauthorized: false}} );
 
@@ -73,11 +73,8 @@ app.post( '/saveselection', ( req,res )=>{
   let SQL = 'INSERT INTO maybellinep (name,image,price,description) VALUES ($1,$2,$3,$4) RETURNING *;';
   let safeValues = [name,image,price,description];
   client.query( SQL,safeValues )
-    .then( results=>{
-      // res.send( results.rows );
-      let productsArr = results.body.map( val=>{
-        return new Product( val );
-      } );
+    .then( ()=>{
+      // res.send( results.rows )
       res.redirect( '/mycard' );
     } );
 } );
@@ -86,16 +83,14 @@ app.get( '/mycard', ( req,res )=>{
   let SQL = 'SELECT * FROM maybellinep;';
   client.query( SQL )
     .then( results =>{
-      let productsArr = results.rows.map( val=>{
-        return new Product( val );
-      } );
-      res.render( 'mycard', {results : productsArr} );
+      res.render( 'mycard', {results : results.rows} );
     } );
 } );
 
-app.post( '/product/:id', ( req,res )=>{
+app.get( '/product/:id', ( req,res )=>{
   let SQL = 'SELECT * FROM maybellinep WHERE id=$1;';
   let safeValue = [req.params.id];
+  console.log( safeValue );
   client.query( SQL, safeValue )
     .then( results=>{
       res.render( 'detail' , {val: results.rows[0]} );
